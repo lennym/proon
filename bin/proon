@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+const path = require('path');
+const proon = require('../');
+
+const args = process.argv.splice(2);
+
+const dir = args[0] || '.';
+
+proon({
+  root: path.resolve(process.cwd(), dir)
+});

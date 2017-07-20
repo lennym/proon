@@ -1,0 +1,24 @@
+{
+  "name": "proon",
+  "version": "1.0.0",
+  "description": "",
+  "bin": "./bin/proon",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lennym/proon.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lennym/proon/issues"
+  },
+  "homepage": "https://github.com/lennym/proon#readme",
+  "dependencies": {
+    "espree": "^3.4.3",
+    "findup": "^0.1.5"
+  }
+}
