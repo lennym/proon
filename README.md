@@ -24,7 +24,7 @@ $ npx proon [dir] [--reporter default|json]
 
 ## Important notes
 
-`proon` only (for now) checks for modules that are `require`-d in `.js` files. If you are using a module in some other way, or in a non-`.js` file then it may show as unused.
+`proon` only (for now) checks for modules that are `require`-d in `.js` files (or `.jsx` files). If you are using a module in some other way, or in a non-`.js` file then it may show as unused.
 
 For example, the following cases will not be matched:
 
