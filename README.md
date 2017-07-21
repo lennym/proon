@@ -26,6 +26,7 @@ $ npx proon [dir] [--reporter default|json] [--production]
 
 * `--production` - if set to true then `proon` will only consider modules listed in `dependencies` (i.e. will ignore `devDependencies` and `optionalDependencies`). Additionally will ignore files found in `./test` directory.
 * `--ignore-binaries` - if set to true then `proon` will not attempt to check if module binaries are used in npm scripts.
+* `--ignore` - prevent parsing code in particular files or directories. By default anything in `.gitignore` file is ignored.
 
 ## Important notes
 

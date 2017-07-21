@@ -10,7 +10,8 @@ const dir = args._[0] || '.';
 const opts = {
   root: path.resolve(process.cwd(), dir),
   production: args.production,
-  binaries: !args['ignore-binaries']
+  binaries: !args['ignore-binaries'],
+  ignore: args.ignore || 'git'
 };
 
 const reporter = args.reporter || 'default';
