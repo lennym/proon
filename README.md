@@ -34,3 +34,7 @@ For example, the following cases will not be matched:
 ## What about `import`?
 
 Not yet. Maybe soon.
+
+## Related projects
+
+* [eslint-plugin-implicit-dependencies](https://www.npmjs.com/package/eslint-plugin-implicit-dependencies) - an eslint plugin to detect `require`-d modules which are not listed in package.json
