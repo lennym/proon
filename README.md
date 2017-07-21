@@ -21,3 +21,16 @@ $ proon [dir]
 ```
 $ npx proon [dir]
 ```
+
+## Important notes
+
+`proon` only (for now) checks for modules that are `require`-d in `.js` files. If you are using a module in some other way, or in a non-`.js` file then it may show as unused.
+
+For example, the following cases will not be matched:
+
+* When a module binary is used in an npm script
+* If a module name is dynamically constructed - e.g. `require('lo' + 'dash')`
+
+## What about `import`?
+
+Not yet. Maybe soon.
