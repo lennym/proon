@@ -11,7 +11,8 @@ const opts = {
   root: path.resolve(process.cwd(), dir),
   production: args.production,
   binaries: !args['ignore-binaries'],
-  ignore: args.ignore || 'git'
+  ignore: args.ignore || 'git',
+  include: args.include || []
 };
 
 const reporter = args.reporter || 'default';
