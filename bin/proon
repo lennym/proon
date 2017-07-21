@@ -1,12 +1,36 @@
 #!/usr/bin/env node
 
 const path = require('path');
+const chalk = require('chalk');
+
 const proon = require('../');
 
 const args = process.argv.splice(2);
 
 const dir = args[0] || '.';
 
-proon({
+const opts = {
   root: path.resolve(process.cwd(), dir)
-});
+};
+
+console.log('Scanning code for dependencies...')
+proon.inspect(opts)
+  .then(result => {
+    console.log();
+    if (result.implicit.length) {
+      console.log(chalk.red('The following modules are required in code, but not listed as dependencies in package.json:'));
+      result.implicit.forEach(name => console.log(`* ${name}`));
+    } else {
+      console.log(chalk.green('All of your required modules are listed in package.json!'));
+    }
+    console.log();
+    if (result.redundant.length) {
+      console.log(chalk.red('The following modules are listed as dependencies, but are not required in code:'));
+      result.redundant.forEach(name => console.log(`* ${name}`));
+    } else {
+      console.log(chalk.green('All of your dependencies listed in package.json are used in code!'));
+    }
+  })
+  .catch(e => {
+    console.error(e);
+  });
