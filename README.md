@@ -15,11 +15,11 @@ You can either install the `proon` binary as a global, or use `npx` if you're us
 Then run the `proon` command with an optional directory (defaults to `.`):
 
 ```
-$ proon [dir]
+$ proon [dir] [--reporter default|json]
 ```
 
 ```
-$ npx proon [dir]
+$ npx proon [dir] [--reporter default|json]
 ```
 
 ## Important notes

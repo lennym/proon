@@ -24,7 +24,8 @@
     "chalk": "^2.0.1",
     "espree": "^3.4.3",
     "findup": "^0.1.5",
-    "glob": "^7.1.2"
+    "glob": "^7.1.2",
+    "minimist": "^1.2.0"
   },
   "devDependencies": {
     "eslint": "^4.2.0",

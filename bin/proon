@@ -1,36 +1,32 @@
 #!/usr/bin/env node
 
 const path = require('path');
-const chalk = require('chalk');
+const args = require('minimist')(process.argv.slice(2));
 
 const proon = require('../');
 
-const args = process.argv.splice(2);
-
-const dir = args[0] || '.';
+const dir = args._[0] || '.';
 
 const opts = {
   root: path.resolve(process.cwd(), dir)
 };
 
-console.log('Scanning code for dependencies...')
+const reporter = args.reporter || 'default';
+
+let report;
+
+try {
+  report = require(path.resolve(__dirname, '../reporters', reporter));
+} catch (e) {
+  console.error(`Unknown reporter: ${reporter}`);
+  process.exit(1);
+}
+
 proon.inspect(opts)
   .then(result => {
-    console.log();
-    if (result.implicit.length) {
-      console.log(chalk.red('The following modules are required in code, but not listed as dependencies in package.json:'));
-      result.implicit.forEach(name => console.log(`* ${name}`));
-    } else {
-      console.log(chalk.green('All of your required modules are listed in package.json!'));
-    }
-    console.log();
-    if (result.redundant.length) {
-      console.log(chalk.red('The following modules are listed as dependencies, but are not required in code:'));
-      result.redundant.forEach(name => console.log(`* ${name}`));
-    } else {
-      console.log(chalk.green('All of your dependencies listed in package.json are used in code!'));
-    }
+    report(result);
   })
   .catch(e => {
-    console.error(e);
+    console.error(e.message);
+    process.exit(1);
   });
