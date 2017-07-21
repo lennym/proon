@@ -25,15 +25,18 @@ $ npx proon [dir] [--reporter default|json] [--production]
 ## Options
 
 * `--production` - if set to true then `proon` will only consider modules listed in `dependencies` (i.e. will ignore `devDependencies` and `optionalDependencies`). Additionally will ignore files found in `./test` directory.
+* `--ignore-binaries` - if set to true then `proon` will not attempt to check if module binaries are used in npm scripts.
 
 ## Important notes
 
-`proon` only (for now) checks for modules that are `require`-d in `.js` files (or `.jsx` files). If you are using a module in some other way, or in a non-`.js` file then it may show as unused.
+`proon` only (for now) checks for modules that are `require`-d in `.js` files (or `.jsx` files) or used in npm scripts. If you are using a module in some other way, or in a non-`.js` file then it may show as unused.
 
 For example, the following cases will not be matched:
 
-* When a module binary is used in an npm script
+* If a module is used in a non-javascript file - e.g. sass
 * If a module name is dynamically constructed - e.g. `require('lo' + 'dash')`
+
+Checking in npm scripts is not 100% reliable yet, in part due to a minor [bug in npm](https://github.com/npm/npm/issues/17877) which doesn't show all binaries for a module.
 
 ## What about `import`?
 

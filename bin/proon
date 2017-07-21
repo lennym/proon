@@ -9,7 +9,8 @@ const dir = args._[0] || '.';
 
 const opts = {
   root: path.resolve(process.cwd(), dir),
-  production: args.production
+  production: args.production,
+  binaries: !args['ignore-binaries']
 };
 
 const reporter = args.reporter || 'default';
@@ -25,7 +26,7 @@ try {
 
 proon.inspect(opts)
   .then(result => {
-    report(result);
+    report(result, opts);
   })
   .catch(e => {
     console.error(e.message);
