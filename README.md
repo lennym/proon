@@ -15,12 +15,16 @@ You can either install the `proon` binary as a global, or use `npx` if you're us
 Then run the `proon` command with an optional directory (defaults to `.`):
 
 ```
-$ proon [dir] [--reporter default|json]
+$ proon [dir] [--reporter default|json] [--production]
 ```
 
 ```
-$ npx proon [dir] [--reporter default|json]
+$ npx proon [dir] [--reporter default|json] [--production]
 ```
+
+## Options
+
+* `--production` - if set to true then `proon` will only consider modules listed in `dependencies` (i.e. will ignore `devDependencies` and `optionalDependencies`). Additionally will ignore files found in `./test` directory.
 
 ## Important notes
 

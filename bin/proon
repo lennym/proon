@@ -8,7 +8,8 @@ const proon = require('../');
 const dir = args._[0] || '.';
 
 const opts = {
-  root: path.resolve(process.cwd(), dir)
+  root: path.resolve(process.cwd(), dir),
+  production: args.production
 };
 
 const reporter = args.reporter || 'default';
